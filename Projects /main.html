@@ -1,0 +1,815 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 " />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <title>Main</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0a1220;
+        --text: #e8eef7;
+        --muted: rgba(232, 238, 247, 0.7);
+        --accent: #70d4ff;
+        --glass: rgba(255, 255, 255, 0.12);
+        --glass-strong: rgba(255, 255, 255, 0.18);
+        --border: rgba(255, 255, 255, 0.16);
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+      .top-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 220px;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 10px;
+        padding: 16px;
+        background: rgba(53, 76, 114, 0.62);
+        backdrop-filter: blur(22px);
+        overflow: auto;
+      }
+      .top-nav a {
+        color: var(--text);
+        text-decoration: none;
+      }
+      .logo {
+        width: 15px;
+        height: 15px;
+        background: #3b82f6;
+        border-radius: 50%;
+        margin-left: 20px;
+      }
+      .logo h2 {
+        font-size: 1rem;
+        letter-spacing: 0.24em;
+        text-align: center;
+        margin-left: 30px;
+        font-weight: 700;
+      }
+
+      hr {
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        width: 200px;
+        padding: 0;
+        margin-left: 0;
+      }
+
+      .menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 24px;
+        padding: 20px;
+        margin-top: 0;
+        list-style: none;
+      }
+      .menu li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 0.9rem;
+        color: var(--text);
+        cursor: pointer;
+      }
+      img {
+        display: block;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+      }
+      .profile-info {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+      }
+      .profile-info h3 {
+        font-size: 0.9rem;
+        color: var(--text);
+        margin: 0;
+      }
+      .profile-info p {
+        font-size: 0.7rem;
+        color: var(--muted);
+        margin: 0;
+        text-align: center;
+      }
+      .profile-info span {
+        font-size: 0.6rem;
+        color: var(--accent);
+      }
+      .info-nav {
+        display: flex;
+
+        margin-left: 20px;
+        align-items: center;
+        gap: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 10px;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .horizontal-nav {
+        display: flex;
+        flex-flow: row-wrap;
+        margin-left: 220px;
+        margin-right: 0px;
+        align-items: center;
+        gap: 20px;
+
+        padding: 16px;
+        background: transparent;
+      }
+      .banner-title {
+        display: flex;
+        width: 100%;
+        justify-content: flex-start;
+        flex-direction: column;
+      }
+      .banner {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        margin-right: 0px;
+        flex-direction: row;
+        background: transparent;
+        justify-content: flex-end;
+        padding-top: 0px;
+      }
+      .horizontal-nav h1 {
+        display: flex;
+        justify-content: flex-start;
+        top: 0;
+        color: var(--text);
+        padding-top: 0px;
+        font-size: 1.5rem;
+        margin: 0;
+      }
+      .search-box {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        gap: 10px;
+        padding: 10px 14px;
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(16px);
+
+        font-size: 0.9rem;
+      }
+      .search-box input {
+        display: flex;
+        align-items: center;
+
+        border: none;
+        background: transparent;
+        color: var(--text);
+        outline: none;
+
+        width: 100px;
+        height: 10px;
+        font-size: 0.9rem;
+        flex-wrap: wrap;
+      }
+
+      .horizontal-nav p {
+        display: flex;
+        justify-content: flex-start;
+        font-size: 0.9rem;
+        flex-wrap: wrap;
+      }
+
+      .datacount {
+        align-items: center;
+        display: flex;
+        margin-left: 235px;
+        flex-wrap: wrap;
+        flex-direction: row;
+      }
+
+      .data {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        margin-right: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 10px;
+        padding: 5px;
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        flex-wrap: wrap;
+      }
+      .data section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: 20px;
+        line-height: 1;
+        font-size: 0.6rem;
+      }
+      .page-shell {
+        display: flex;
+        flex-direction: row;
+        margin-left: 235px;
+        gap: 20px;
+        margin-top: 20px;
+      }
+      .task-card {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        flex-wrap: wrap;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 10px;
+        padding: 5px;
+        padding-right: 0px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        background: rgba(255, 255, 255, 0.05);
+        line-height: 0.4;
+        font-size: 0.6rem;
+      }
+      .task-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        line-height: 0.5;
+        font-size: 0.6rem;
+        width: 100%;
+      }
+      .task-header h3 {
+        display: flex;
+        flex: auto;
+        line-height: 1;
+        color: var(--text);
+        margin: 5px;
+      }
+      .task-header button {
+        display: flex;
+
+        align-items: center;
+        justify-content: flex-end;
+        height: 15px;
+        color: var(--text);
+        line-height: 1;
+        font-size: 0.6rem;
+        margin-right: 10px;
+
+        cursor: pointer;
+      }
+      .task-list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 20px;
+
+        line-height: 0.5;
+        font-size: 0.6rem;
+      }
+      .task-item {
+        display: flex;
+        flex-direction: row;
+
+        align-items: center;
+        line-height: 1rem;
+        font-size: 0.6rem;
+      }
+      .task-item h4 {
+        display: flex;
+        flex: 1;
+        line-height: 1.2;
+        color: var(--text);
+        margin: 0;
+      }
+      .bluedot {
+        width: 10px;
+        height: 10px;
+        background: #3b82f6;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      .greendot {
+        width: 10px;
+        height: 10px;
+        background: #10b981;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      .yellowdot {
+        width: 10px;
+        height: 10px;
+        background: #f59e0b;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      .reddot {
+        width: 10px;
+        height: 10px;
+        background: #ef4444;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      .tag {
+        display: flex;
+        justify-content: flex-start;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 5px;
+        padding: 0px 6px;
+        align-items: center;
+        font-size: 0.5rem;
+        color: var(--muted);
+        margin-top: 2px;
+        margin-left: 10px;
+        margin-right: 60px;
+      }
+
+      .task-item span {
+        padding-right: 5px;
+
+        color: var(--muted);
+      }
+      .project-card {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        flex-wrap: wrap;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 10px;
+        padding: 5px;
+        padding-right: 0px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .project-table {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+        flex-wrap: wrap;
+      }
+      .project-table table {
+        position: relative;
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+        line-height: 1.2;
+        font-size: 0.6rem;
+      }
+      .project-table th,
+      .project-table td {
+        text-align: left;
+        padding: 5px;
+        flex: 1;
+      }
+      .project-table th {
+        background: rgba(255, 255, 255, 0.08);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      }
+      .project-table tr {
+        text-align: left;
+        height: 30px;
+        background: rgba(255, 255, 255, 0.08);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      }
+      .progress-bar {
+        height: 6px;
+        background: var(--accent);
+        border-radius: 3px;
+        margin-top: 4px;
+      }
+      .notice-board {
+        display: flex;
+        gap: 20px;
+        margin-left: 235px;
+        margin-top: 20px;
+      }
+      .recent,
+      .upcoming {
+        flex: 1;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 10px;
+        padding: 5px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        background: rgba(255, 255, 255, 0.05);
+        line-height: 0.5;
+        font-size: 0.6rem;
+      }
+
+      .notice-footer {
+        display: flex;
+        justify-content: center;
+        padding: 5px;
+        color: var(--text);
+        cursor: pointer;
+      }
+      .transation-grid {
+        display: grid;
+        row-gap: 10px;
+        grid-template-columns: 1fr 2fr 1fr 1fr;
+        gap: 10px;
+      }
+      .event-grid {
+        display: grid;
+        row-gap: 10px;
+        grid-template-columns: 1fr 2fr 1fr;
+        gap: 10px;
+
+        border-radius: 10px;
+      }
+      .grid-item {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        padding: 5px;
+        color: white;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        line-height: 1.2;
+      }
+      .footer{
+        display:flex;
+       
+        text-align: center;
+        margin-left: 235px;
+        justify-content: center;
+        align-items: center;
+        padding: center;
+        font-size: 0.6rem;
+        text-decoration: none;
+
+      }
+      /* @media (max-width: 1024px) {
+            .top-nav {
+                width: 260px;
+            }
+            .horizontal-nav {
+                left: 280px;
+                width: calc(100% - 300px);
+            }
+            .page-shell,
+            .datacount {
+                margin-left: 280px;
+            }
+        }
+
+        @media (max-width: 860px) {
+            .top-nav {
+                position: relative;
+                width: 100%;
+                height: auto;
+                border-radius: 0;
+                padding: 16px 12px;
+            }
+            .horizontal-nav {
+                position: relative;
+                left: auto;
+                top: auto;
+                width: 100%;
+                margin-left: 0;
+                flex-direction: column;
+                align-items: stretch;
+                padding: 16px 12px;
+            }
+            .horizontal-nav > div,
+            .banner,
+            .search-box,
+            .datacount,
+            .page-shell,
+            .task-card {
+                width: 100%;
+            }
+            .datacount,
+            .page-shell {
+                margin-left: 0;
+                gap: 16px;
+                padding: 0 12px 24px;
+            }
+            .menu {
+                padding: 12px 0;
+                gap: 16px;
+            }
+            hr {
+                width: 100%;
+            }
+            .info-nav {
+                width: 100%;
+                margin-left: 0;
+            }
+            .task-card {
+                padding: 16px;
+            }
+            .task-item {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+            }
+            .tag {
+                margin-right: 0;
+                margin-left: auto;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .top-nav {
+                padding: 12px;
+            }
+            .horizontal-nav {
+                padding: 12px;
+                gap: 10px;
+            }
+            .search-box {
+                width: 100%;
+            }
+            .task-card {
+                width: 100%;
+            }
+            .data {
+                width: 100%;
+                margin-right: 0;
+            }
+        }*/
+    </style>
+  </head>
+  <body>
+    <nav class="top-nav">
+      <div>
+        <div class="logo"><h2>RozanDev</h2></div>
+
+        <hr />
+        <ul class="menu">
+          <li><i class="fa-solid fa-house"></i> Dashboard</li>
+          <li><i class="fa-solid fa-folder"></i>Projects</li>
+          <li><i class="fa-solid fa-hammer"></i>Tasks</li>
+          <li><i class="fa-solid fa-comment"></i>Messages</li>
+          <li><i class="fa-solid fa-chart-line"></i>Analytics</li>
+          <li><i class="fa-solid fa-calendar"></i>Calendar</li>
+          <li><i class="fa-solid fa-sticky-note"></i>Notes</li>
+          <li><i class="fa-solid fa-cog"></i>Settings</li>
+        </ul>
+      </div>
+      <div class="profile">
+        <div>
+          <nav class="info-nav">
+            <img src="images/rozan.jpeg" alt="Profile Picture" />
+
+            <div class="profile-info">
+              <h3>Rozan</h3>
+              <p>Indie developer</p>
+            </div>
+          </nav>
+        </div>
+        <hr />
+
+        <p style="margin-left: 20px; margin-bottom: 0px">Quick Links</p>
+        <ul class="menu">
+          <li><i class="fa-solid fa-book"></i> Documentations</li>
+          <li><i class="fa-solid fa-graduation-cap"></i> Learning Resources</li>
+          <li><i class="fa-solid fa-puzzle-piece"></i> UI Components</li>
+          <li><i class="fa-solid fa-headset"></i> Supports</li>
+        </ul>
+      </div>
+    </nav>
+    <div class="horizontal-nav">
+      <div class="banner-title">
+        <h1>Dashboard</h1>
+        <p>Welcome Back, Rozan! Let's build something amazing today.</p>
+      </div>
+      <div class="banner">
+        <div class="search-box">
+          <input type="text" placeholder="Search..." />
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <i class="fa-solid fa-bell"></i>
+        <img src="images/rozan.jpeg" alt="Profile Picture" />
+      </div>
+    </div>
+
+    <div class="datacount">
+      <div class="data">
+        <img src="images/rozan.jpeg" alt="Project" />
+        <section>
+          <h3>Total Projects</h3>
+          <p>15</p>
+        </section>
+      </div>
+      <div class="data">
+        <img src="images/rozan.jpeg" alt="Project" />
+        <section>
+          <h3>Total Tasks</h3>
+          <p>25</p>
+        </section>
+      </div>
+      <div class="data">
+        <img src="images/rozan.jpeg" alt="Project" />
+        <section>
+          <h3>Total Messages</h3>
+          <p>10</p>
+        </section>
+      </div>
+      <div class="data">
+        <img src="images/rozan.jpeg" alt="Project" />
+        <section>
+          <h3>Total Notes</h3>
+          <p>5</p>
+        </section>
+      </div>
+    </div>
+    <div class="page-shell">
+      <div class="task-card">
+        <nav class="task-header">
+          <h3>Recent tasks</h3>
+          <button>View all</button>
+        </nav>
+        <div class="task-list">
+          <div class="task-item">
+            <span class="greendot"></span>
+            <h4>Building landing page for portfolio</h4>
+            <span class="tag">Design</span>
+            <span>may 29</span>
+          </div>
+          <div class="task-item">
+            <span class="reddot"></span>
+            <h4>Create API integration</h4>
+            <span class="tag">Development</span>
+            <span>may 29</span>
+          </div>
+
+          <div class="task-item">
+            <span class="bluedot"></span>
+            <h4>Fix responsive issues</h4>
+            <span class="tag">Development</span>
+            <span>may 29</span>
+          </div>
+          <div class="task-item">
+            <span class="yellowdot"></span>
+            <h4>Write project documentation</h4>
+            <span class="tag">writing</span>
+            <span>may 29</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="project-card">
+          <nav class="task-header">
+            <h3>Projects List</h3>
+            <button>View all</button>
+          </nav>
+          <div class="project-table">
+            <table>
+              <tr>
+                <th>Project Name</th>
+                <th>Status</th>
+                <th>Progress</th>
+                <th>Due Date</th>
+              </tr>
+              <tr>
+                <td>Portfolio Website</td>
+                <td class="tag" style="background-color: #f59e0b; color: white">
+                  In Progress
+                </td>
+                <td>
+                  70%
+                  <div
+                    class="progress-bar"
+                    style="width: 70%; background-color: #3b82f6"
+                  ></div>
+                </td>
+                <td>June 15, 2024</td>
+              </tr>
+              <tr>
+                <td>Mobile App Design</td>
+                <td class="tag" style="background-color: #10b981; color: white">
+                  Completed
+                </td>
+                <td>
+                  100%
+                  <div
+                    class="progress-bar"
+                    style="width: 100%; background-color: #10b981"
+                  ></div>
+                </td>
+                <td>May 30, 2024</td>
+              </tr>
+              <tr>
+                <td>API Development</td>
+                <td class="tag" style="background-color: #f59e0b; color: white">
+                  In Progress
+                </td>
+                <td>
+                  50%
+                  <div
+                    class="progress-bar"
+                    style="width: 50%; background-color: #f59e0b"
+                  ></div>
+                </td>
+                <td>June 20, 2024</td>
+              </tr>
+              <tr>
+                <td>Project Management Tool</td>
+                <td class="tag" style="background-color: #ef4444; color: white">
+                  Not Started
+                </td>
+                <td>
+                  0%
+                  <div
+                    class="progress-bar"
+                    style="width: 0%; background-color: #ef4444"
+                  ></div>
+                </td>
+                <td>June 30, 2024</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="notice-board">
+      <div class="recent">
+        <div class="notice-header">
+          <h3>Recent transactions</h3>
+        </div>
+        <div class="transation-grid">
+          <div class="grid-item">Date</div>
+          <div class="grid-item">Description</div>
+          <div class="grid-item">Category</div>
+          <div class="grid-item">Amount</div>
+          <div class="grid-item">May 30 2024</div>
+          <div class="grid-item">Domain renewal</div>
+          <div class="grid-item">Business</div>
+          <div class="grid-item">-$12.299</div>
+          <div class="grid-item">May 30 2024</div>
+          <div class="grid-item">Domain renewal</div>
+          <div class="grid-item">Business</div>
+          <div class="grid-item">-$12.299</div>
+          <div class="grid-item">May 30 2024</div>
+          <div class="grid-item">Domain renewal</div>
+          <div class="grid-item">Business</div>
+          <div class="grid-item">-$12.299</div>
+          <div class="grid-item">May 30 2024</div>
+          <div class="grid-item">Domain renewal</div>
+          <div class="grid-item">Business</div>
+          <div class="grid-item">-$12.299</div>
+        </div>
+        <div class="notice-footer">view all</div>
+      </div>
+      <div class="upcoming">
+        <div class="notice-header">
+          <h3>Upcoming events</h3>
+        </div>
+        <div class="event-grid">
+          <div class="grid-item"><i class="fa-solid fa-calendar"></i></div>
+          <div class="grid-item">Description</div>
+          <div class="grid-item">May 30 2024</div>
+
+          <div class="grid-item"><i class="fa-solid fa-calendar"></i></div>
+          <div class="grid-item">Description</div>
+          <div class="grid-item">May 30 2024</div>
+
+          <div class="grid-item"><i class="fa-solid fa-calendar"></i></div>
+          <div class="grid-item">Description</div>
+          <div class="grid-item">May 30 2024</div>
+
+          <div class="grid-item"><i class="fa-solid fa-calendar"></i></div>
+          <div class="grid-item">Description</div>
+          <div class="grid-item">May 30 2024</div>
+
+          <div class="grid-item"><i class="fa-solid fa-calendar"></i></div>
+          <div class="grid-item">Description</div>
+          <div class="grid-item">May 30 2024</div>
+        </div>
+        <div class="notice-footer">view all</div>
+      </div>
+    </div>
+    <footer>
+      <div class="footer">
+         <h4> &copy; 2026 RozanDev. All rights reserved<h4></h4>
+      </div>
+       
+    </footer>
+  </body>
+</html>

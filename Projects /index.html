@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg: #0a1220;
+            --text: #e8eef7;
+            --muted: rgba(232,238,247,0.7);
+            --accent: #70d4ff;
+            --glass: rgba(255,255,255,0.12);
+            --glass-strong: rgba(255,255,255,0.18);
+            --border: rgba(255,255,255,0.16);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: radial-gradient(circle at top right, rgba(112,212,255,0.22), transparent 22%),
+                        radial-gradient(circle at bottom left, rgba(140,98,255,0.24), transparent 20%),
+                        linear-gradient(180deg, #071019 0%, #0d1626 100%);
+            color: var(--text);
+            padding-top: 88px;
+        }
+
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 88px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 28px;
+            background: rgba(10, 18, 32, 0.62);
+            backdrop-filter: blur(22px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        .brand {
+            font-size: 1rem;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        .menu {
+            display: flex;
+            gap: 24px;
+            margin-left: 30px;
+        }
+
+        .top-nav a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 180ms ease;
+        }
+
+        .top-nav a:hover {
+            color: var(--text);
+        }
+
+        .search-form {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            backdrop-filter: blur(16px);
+        }
+
+        .search-input {
+            width: 180px;
+            border: none;
+            background: transparent;
+            color: var(--text);
+            outline: none;
+            font-size: 0.95rem;
+        }
+
+        .search-input::placeholder {
+            color: rgba(232,238,247,0.55);
+        }
+
+        .search-btn {
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.16);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: transform 180ms ease, background 180ms ease;
+        }
+
+        .search-btn:hover {
+            background: rgba(255,255,255,0.24);
+            transform: translateY(-1px);
+        }
+
+        .page-shell {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 24px 60px;
+        }
+
+        .hero-card {
+            margin-top: 26px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 32px;
+            align-items: center;
+            padding: 42px;
+            border-radius: 32px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid var(--border);
+            box-shadow: 0 40px 110px rgba(0,0,0,0.28);
+            backdrop-filter: blur(30px);
+        }
+
+        .hero-content h1 {
+            margin: 0;
+            font-size: clamp(3rem, 4vw, 4.4rem);
+            line-height: 0.98;
+        }
+
+        .hero-content p {
+            margin: 28px 0 0;
+            max-width: 560px;
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.9;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 32px;
+        }
+
+        .button-primary,
+        .button-secondary {
+            border: none;
+            border-radius: 999px;
+            padding: 14px 24px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: transform 180ms ease, box-shadow 180ms ease;
+        }
+
+        .button-primary {
+            background: linear-gradient(135deg, #6cc2ff 0%, #5b7dff 100%);
+            color: #081420;
+            box-shadow: 0 18px 40px rgba(92,124,255,0.24);
+        }
+
+        .button-secondary {
+            background: rgba(255,255,255,0.12);
+            color: var(--text);
+            border: 1px solid rgba(255,255,255,0.18);
+        }
+
+        .button-primary:hover,
+        .button-secondary:hover {
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            width: 100%;
+            border-radius: 28px;
+            box-shadow: 0 30px 90px rgba(0,0,0,0.35);
+            object-fit: cover;
+            max-height: 540px;
+        }
+
+        @media (max-width: 900px) {
+            .hero-card {
+                grid-template-columns: 1fr;
+                padding: 32px;
+            }
+
+            .search-input {
+                width: 120px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .top-nav {
+                padding: 0 16px;
+            }
+
+            .menu {
+                display: none;
+            }
+
+            .hero-card {
+                padding: 24px;
+            }
+
+            .search-form {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+<body>
+<nav class="top-nav">
+    <div class="brand">My Site</div>
+    <div class="menu">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </div>
+    <form class="search-form" action="#" onsubmit="return false;">
+        <input class="search-input" type="search" placeholder="Search..." aria-label="Search">
+        <button class="search-btn" aria-label="Search">🔍</button>
+    </form>
+</nav>
+<div class="page-shell">
+    <section class="hero-card">
+        <div class="hero-content">
+            <h1>Premium glass-style interface</h1>
+            <p>Enjoy a modern, Apple-inspired UI with soft blur, translucent surfaces, and refined card styling. This page now looks more polished and elegant.</p>
+            <div class="hero-actions">
+                <button class="button-primary" onclick="location.href='main.html'">Get Started</button>
+                <button class="button-secondary">Learn More</button>
+            </div>
+        </div>
+        <img class="hero-image" src="images/thiri.JPG" alt="Thiri">
+    </section>
+</div>
+</body>
+</html>
