@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Developer Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+  <body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <i class="fas fa-code"></i>
+        </div>
+        <h2 class="logo-text">DevHub</h2>
+      </div>
+
+      <!-- Profile Section -->
+      <div class="profile-section">
+        <img
+          src="https://via.placeholder.com/48"
+          alt="Profile"
+          class="profile-avatar"
+        />
+        <div class="profile-info">
+          <h4 class="profile-name">Alex Developer</h4>
+          <p class="profile-role">Full Stack Dev</p>
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- Main Navigation -->
+      <nav class="nav-menu">
+        <ul>
+          <li class="nav-item active">
+            <a href="#" class="nav-link">
+              <i class="fas fa-home"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fas fa-folder-open"></i>
+              <span>Projects</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fas fa-tasks"></i>
+              <span>Tasks</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fas fa-envelope"></i>
+              <span>Messages</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fas fa-chart-line"></i>
+              <span>Analytics</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fas fa-calendar"></i>
+              <span>Calendar</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fas fa-sticky-note"></i>
+              <span>Notes</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fas fa-cog"></i>
+              <span>Settings</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <hr class="divider" />
+
+      <!-- Help Section -->
+      <div class="help-section">
+        <p class="help-text">Need help?</p>
+        <a href="#" class="help-link">
+          <i class="fas fa-headset"></i> Support
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Header Section -->
+      <header class="dashboard-header">
+        <div class="header-left">
+          <h1 class="page-title">Dashboard</h1>
+          <p class="page-subtitle">
+            Welcome back, Alex! Here's your performance overview.
+          </p>
+        </div>
+        <div class="header-right">
+          <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search..." />
+          </div>
+          <button class="header-icon-btn" title="Notifications">
+            <i class="fas fa-bell"></i>
+            <span class="notification-badge">3</span>
+          </button>
+          <button class="header-icon-btn" title="Toggle theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <img
+            src="https://via.placeholder.com/40"
+            alt="Profile"
+            class="header-avatar"
+          />
+        </div>
+      </header>
+
+      <!-- Statistics Cards -->
+      <section class="stats-section">
+        <article class="stat-card">
+          <div class="stat-header">
+            <h3 class="stat-label">Total Projects</h3>
+            <i class="fas fa-folder-open stat-icon"></i>
+          </div>
+          <p class="stat-value">24</p>
+          <p class="stat-change positive">
+            <i class="fas fa-arrow-up"></i> 12% from last month
+          </p>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-header">
+            <h3 class="stat-label">Tasks Completed</h3>
+            <i class="fas fa-check-circle stat-icon"></i>
+          </div>
+          <p class="stat-value">156</p>
+          <p class="stat-change positive">
+            <i class="fas fa-arrow-up"></i> 8% from last month
+          </p>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-header">
+            <h3 class="stat-label">Total Visitors</h3>
+            <i class="fas fa-users stat-icon"></i>
+          </div>
+          <p class="stat-value">3,842</p>
+          <p class="stat-change negative">
+            <i class="fas fa-arrow-down"></i> 3% from last month
+          </p>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-header">
+            <h3 class="stat-label">Total Revenue</h3>
+            <i class="fas fa-dollar-sign stat-icon"></i>
+          </div>
+          <p class="stat-value">$24,500</p>
+          <p class="stat-change positive">
+            <i class="fas fa-arrow-up"></i> 18% from last month
+          </p>
+        </article>
+      </section>
+
+      <!-- Two Column Layout -->
+      <section class="content-grid">
+        <!-- Recent Tasks Card -->
+        <article class="card">
+          <div class="card-header">
+            <h2 class="card-title">Recent Tasks</h2>
+            <a href="#" class="card-link">View All</a>
+          </div>
+          <div class="task-list">
+            <div class="task-item">
+              <div class="task-status completed"></div>
+              <div class="task-content">
+                <h4 class="task-name">Design new landing page</h4>
+                <p class="task-meta">Design • Due: June 15</p>
+              </div>
+              <span class="task-badge design">Design</span>
+            </div>
+            <div class="task-item">
+              <div class="task-status in-progress"></div>
+              <div class="task-content">
+                <h4 class="task-name">Implement API endpoints</h4>
+                <p class="task-meta">Development • Due: June 18</p>
+              </div>
+              <span class="task-badge dev">Development</span>
+            </div>
+            <div class="task-item">
+              <div class="task-status in-progress"></div>
+              <div class="task-content">
+                <h4 class="task-name">Write documentation</h4>
+                <p class="task-meta">Documentation • Due: June 20</p>
+              </div>
+              <span class="task-badge docs">Docs</span>
+            </div>
+            <div class="task-item">
+              <div class="task-status pending"></div>
+              <div class="task-content">
+                <h4 class="task-name">Fix responsive bugs</h4>
+                <p class="task-meta">Testing • Due: June 22</p>
+              </div>
+              <span class="task-badge testing">Testing</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Projects Card -->
+        <article class="card">
+          <div class="card-header">
+            <h2 class="card-title">Projects</h2>
+            <a href="#" class="card-link">View All</a>
+          </div>
+          <div class="project-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Project</th>
+                  <th>Status</th>
+                  <th>Progress</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="project-name">
+                    <i class="fas fa-cube"></i> Portfolio Website
+                  </td>
+                  <td>
+                    <span class="badge badge-progress">In Progress</span>
+                  </td>
+                  <td>
+                    <div class="progress-container">
+                      <div class="progress-bar" style="width: 75%"></div>
+                      <span class="progress-text">75%</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="project-name">
+                    <i class="fas fa-mobile-alt"></i> Mobile App
+                  </td>
+                  <td>
+                    <span class="badge badge-completed">Completed</span>
+                  </td>
+                  <td>
+                    <div class="progress-container">
+                      <div
+                        class="progress-bar completed"
+                        style="width: 100%"
+                      ></div>
+                      <span class="progress-text">100%</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="project-name">
+                    <i class="fas fa-server"></i> Backend API
+                  </td>
+                  <td>
+                    <span class="badge badge-progress">In Progress</span>
+                  </td>
+                  <td>
+                    <div class="progress-container">
+                      <div class="progress-bar" style="width: 45%"></div>
+                      <span class="progress-text">45%</span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <!-- Bottom Section -->
+      <section class="bottom-grid">
+        <!-- Recent Transactions -->
+        <article class="card">
+          <div class="card-header">
+            <h2 class="card-title">Recent Transactions</h2>
+            <a href="#" class="card-link">View All</a>
+          </div>
+          <div class="transaction-list">
+            <div class="transaction-item">
+              <div class="transaction-icon">
+                <i class="fas fa-download"></i>
+              </div>
+              <div class="transaction-content">
+                <h4 class="transaction-name">Payment Received</h4>
+                <p class="transaction-date">June 5, 2024</p>
+              </div>
+              <span class="transaction-amount positive">+$2,500</span>
+            </div>
+            <div class="transaction-item">
+              <div class="transaction-icon">
+                <i class="fas fa-upload"></i>
+              </div>
+              <div class="transaction-content">
+                <h4 class="transaction-name">Server Hosting</h4>
+                <p class="transaction-date">June 4, 2024</p>
+              </div>
+              <span class="transaction-amount negative">-$99</span>
+            </div>
+            <div class="transaction-item">
+              <div class="transaction-icon">
+                <i class="fas fa-download"></i>
+              </div>
+              <div class="transaction-content">
+                <h4 class="transaction-name">Freelance Project</h4>
+                <p class="transaction-date">June 3, 2024</p>
+              </div>
+              <span class="transaction-amount positive">+$1,800</span>
+            </div>
+            <div class="transaction-item">
+              <div class="transaction-icon">
+                <i class="fas fa-upload"></i>
+              </div>
+              <div class="transaction-content">
+                <h4 class="transaction-name">Software License</h4>
+                <p class="transaction-date">June 1, 2024</p>
+              </div>
+              <span class="transaction-amount negative">-$299</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Upcoming Events -->
+        <article class="card">
+          <div class="card-header">
+            <h2 class="card-title">Upcoming Events</h2>
+            <a href="#" class="card-link">View All</a>
+          </div>
+          <div class="event-list">
+            <div class="event-item">
+              <div class="event-date">
+                <span class="date-day">12</span>
+                <span class="date-month">JUN</span>
+              </div>
+              <div class="event-content">
+                <h4 class="event-name">Team Standup</h4>
+                <p class="event-time"><i class="fas fa-clock"></i> 10:00 AM</p>
+              </div>
+            </div>
+            <div class="event-item">
+              <div class="event-date">
+                <span class="date-day">15</span>
+                <span class="date-month">JUN</span>
+              </div>
+              <div class="event-content">
+                <h4 class="event-name">Project Deadline</h4>
+                <p class="event-time"><i class="fas fa-clock"></i> 5:00 PM</p>
+              </div>
+            </div>
+            <div class="event-item">
+              <div class="event-date">
+                <span class="date-day">18</span>
+                <span class="date-month">JUN</span>
+              </div>
+              <div class="event-content">
+                <h4 class="event-name">Client Presentation</h4>
+                <p class="event-time"><i class="fas fa-clock"></i> 2:00 PM</p>
+              </div>
+            </div>
+            <div class="event-item">
+              <div class="event-date">
+                <span class="date-day">22</span>
+                <span class="date-month">JUN</span>
+              </div>
+              <div class="event-content">
+                <h4 class="event-name">Code Review</h4>
+                <p class="event-time"><i class="fas fa-clock"></i> 3:30 PM</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
